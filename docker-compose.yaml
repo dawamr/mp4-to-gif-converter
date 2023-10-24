@@ -1,0 +1,16 @@
+version: '3'
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mp4togifv2
+    ports:
+      - "3004:3004"
+    volumes:
+      - /path/to/local/data:/app/data
+      - /path/to/local/uploads:/app/uploads  # Add this line for the uploads directory
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:latest
